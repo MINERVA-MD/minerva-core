@@ -1,0 +1,26 @@
+name: CI
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: Install node dependencies
+        run: npm i
+
+      - name: Run build
+        run: npm run make
