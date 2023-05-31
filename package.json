@@ -1,0 +1,39 @@
+{
+  "name": "minerva-core",
+  "version": "1.0.0",
+  "description": "A Collaborative Markdown Editor for Professionals",
+  "main": "main.js",
+  "engines": {
+    "node": ">=16.19.1"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MINERVA-MD/minerva-core.git"
+  },
+  "keywords": [
+    "markdown",
+    "editor"
+  ],
+  "author": "Minerva",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MINERVA-MD/minerva-core/issues"
+  },
+  "homepage": "https://github.com/MINERVA-MD/minerva-core#readme",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "electron": "^24.3.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
