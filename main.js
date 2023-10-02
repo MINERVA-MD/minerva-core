@@ -1,31 +1,51 @@
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const { app, BrowserWindow, ipcMain } = require('electron');
+const serve = require('electron-serve');
+const loadURL = serve({ directory: 'public' });
 
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-        preload: path.join(__dirname, 'preload.js'),
-    },
-  })
+let mainWindow;
 
-  ipcMain.handle('ping', () => 'pong')
-  win.loadFile('index.html')
+function isDev() {
+    return !app.isPackaged;
 }
 
-app.whenReady().then(() => {
-  createWindow()
+function createWindow() {    
+    mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            preload: path.join(__dirname, 'preload.js')
+        },
+        icon: path.join(__dirname, 'public/favicon.png'),
+        show: false
+    });
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+    if (isDev()) {
+        mainWindow.loadURL('http://localhost:8080/');
+    } else {
+        loadURL(mainWindow);
     }
-  })
-})
+    
+    // Open the DevTools and also disable Electron Security Warning.
+    // process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
+    // mainWindow.webContents.openDevTools();
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
+    mainWindow.on('closed', function () {
+        mainWindow = null
+    });
+
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show()
+    });
+}
+
+app.on('ready', createWindow);
+
+app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin') app.quit()
+});
+
+app.on('activate', function () {
+    if (mainWindow === null) createWindow()
+});
