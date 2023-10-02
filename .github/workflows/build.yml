@@ -20,7 +20,7 @@ jobs:
           node-version: latest
 
       - name: Install node dependencies
-        run: yarn
+        run: npm ci
 
       - name: Run build
-        run: yarn make
+        run: npm run make
