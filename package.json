@@ -12,8 +12,7 @@
     "start": "sirv public --no-clear",
     "electron": "wait-on http://localhost:8080 && electron .",
     "electron-dev": "concurrently \"yarn run dev\" \"yarn run electron\"",
-    "preelectron-pack": "yarn run build",
-    "make": "electron-builder"
+    "make": "yarn build && electron-builder"
   },
   "repository": {
     "type": "git",
