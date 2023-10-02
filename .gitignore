@@ -131,3 +131,6 @@ dist
 
 # macos finder metadata
 .DS_Store
+
+# Svelte Distribution
+public/build/
