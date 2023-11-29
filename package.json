@@ -1,0 +1,49 @@
+{
+  "name": "minerva-core",
+  "version": "1.0.0",
+  "description": "A Collaborative Markdown Editor for Professionals",
+  "main": "main.js",
+  "engines": {
+    "node": ">=16.19.1"
+  },
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "dev": "rollup -c -w --bundleConfigAsCjs",
+    "start": "sirv public --no-clear",
+    "electron": "wait-on http://localhost:8080 && electron .",
+    "electron-dev": "concurrently \"yarn run dev\" \"yarn run electron\"",
+    "make": "yarn build && electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MINERVA-MD/minerva-core.git"
+  },
+  "keywords": [
+    "markdown",
+    "editor"
+  ],
+  "author": "Minerva",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MINERVA-MD/minerva-core/issues"
+  },
+  "homepage": "https://github.com/MINERVA-MD/minerva-core#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.3",
+    "concurrently": "^8.2.1",
+    "electron": "^24.3.0",
+    "electron-builder": "^24.6.4",
+    "rollup": "^3.29.4",
+    "rollup-plugin-css-only": "^4.3.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-svelte": "^7.1.6",
+    "sirv-cli": "^2.0.2",
+    "svelte": "^4.2.1",
+    "wait-on": "^7.0.1"
+  },
+  "dependencies": {
+    "electron-serve": "^1.1.0"
+  }
+}
