@@ -1,0 +1,10 @@
+{
+    "exclude": ["src/core/**/*.spec.ts"],
+    "include": [ "./types/**/*.d.ts", "src/core/**/*.ts", "src/core/main/tsconfig.json"],
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "moduleResolution": "Node",
+        "types": ["node"]
+    }
+}

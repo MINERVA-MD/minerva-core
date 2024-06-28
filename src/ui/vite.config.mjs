@@ -24,7 +24,7 @@ import {svelte} from '@sveltejs/vite-plugin-svelte'
     build: {
       sourcemap: true,
       target: `chrome${chrome}`,
-      outDir: 'dist',
+      outDir: '../../dist/ui',
       assetsDir: '.',
       rollupOptions: {
         input: join(PACKAGE_ROOT, 'index.html'),

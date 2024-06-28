@@ -25,7 +25,7 @@ function setupMainPackageWatcher({resolvedUrls}) {
   return build({
     mode,
     logLevel,
-    configFile: 'src/core/main/vite.config.js',
+    configFile: 'src/core/main/vite.config.ts',
     build: {
       /**
        * Set to {} to enable rollup watcher
@@ -67,7 +67,7 @@ function setupPreloadPackageWatcher({ws}) {
   return build({
     mode,
     logLevel,
-    configFile: 'src/core/preload/vite.config.js',
+    configFile: 'src/core/preload/vite.config.ts',
     build: {
       /**
        * Set to {} to enable rollup watcher

@@ -13,16 +13,11 @@ const config = {
   mode: process.env.MODE,
   root: PACKAGE_ROOT,
   envDir: PROJECT_ROOT,
-  resolve: {
-    alias: {
-      '/@/': join(PACKAGE_ROOT, 'src') + '/',
-    },
-  },
   build: {
     ssr: true,
     sourcemap: 'inline',
     target: `node${node}`,
-    outDir: 'dist',
+    outDir: '../../../dist/main',
     assetsDir: '.',
     minify: process.env.MODE !== 'development',
     lib: {

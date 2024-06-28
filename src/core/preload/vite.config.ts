@@ -18,7 +18,7 @@ const config = {
     ssr: true,
     sourcemap: 'inline',
     target: `chrome${chrome}`,
-    outDir: 'dist',
+    outDir: '../../../dist/preload',
     assetsDir: '.',
     minify: process.env.MODE !== 'development',
     lib: {

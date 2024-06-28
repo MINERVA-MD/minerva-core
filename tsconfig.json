@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.base.json",
+    "include": [
+        "src/core/preload/*.d.ts"
+    ],
+    "references": [
+        { "path": "./tsconfig.node.json" },
+        { "path": "./tsconfig.web.json" }
+    ]
+}
