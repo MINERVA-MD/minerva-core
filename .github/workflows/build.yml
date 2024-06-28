@@ -23,4 +23,4 @@ jobs:
         run: yarn
 
       - name: Run build
-        run: yarn make
+        run: yarn build
