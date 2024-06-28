@@ -1,9 +1,0 @@
-icon: public/favicon.png
-productName: Minerva
-files:
-  - public/**/*
-  - main.js
-  - preload.js
-win: {}
-linux: {}
-mac: {}

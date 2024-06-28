@@ -1,49 +1,56 @@
 {
-  "name": "minerva-core",
+  "name": "minerva",
+  "description": "Markdown Editor For Professionals",
   "version": "1.0.0",
-  "description": "A Collaborative Markdown Editor for Professionals",
-  "main": "main.js",
-  "engines": {
-    "node": ">=16.19.1"
-  },
+  "private": true,
+  "main": "src/core/main/dist/index.cjs",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
-    "dev": "rollup -c -w --bundleConfigAsCjs",
-    "start": "sirv public --no-clear",
-    "electron": "wait-on http://localhost:8080 && electron .",
-    "electron-dev": "concurrently \"yarn run dev\" \"yarn run electron\"",
-    "make": "yarn build && electron-builder"
+    "build": "yarn build:main && yarn build:preload && yarn build:ui",
+    "build:main": "cd ./src/core/main && vite build",
+    "build:preload": "cd ./src/core/preload && vite build",
+    "build:ui": "cd ./src/ui && vite build",
+    "compile": "cross-env MODE=production yarn build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
+    "test": "yarn test:main && yarn test:preload && yarn test:ui && yarn test:e2e",
+    "test:e2e": "yarn build && vitest run",
+    "test:main": "vitest run -r src/main --passWithNoTests",
+    "test:preload": "vitest run -r src/preload --passWithNoTests",
+    "test:ui": "vitest run -r src/ui --passWithNoTests",
+    "dev": "node scripts/watch.mjs",
+    "lint": "eslint . --ext js,mjs,cjs,ts,mts,cts,vue",
+    "typecheck:main": "tsc --noEmit -p src/main/tsconfig.json",
+    "typecheck:preload": "tsc --noEmit -p src/preload/tsconfig.json",
+    "typecheck:ui": "vue-tsc --noEmit -p src/ui/tsconfig.json",
+    "typecheck": "yarn typecheck:main && yarn typecheck:preload && yarn typecheck:ui",
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs",
+    "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,vue,json}\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MINERVA-MD/minerva-core.git"
-  },
-  "keywords": [
-    "markdown",
-    "editor"
-  ],
-  "author": "Minerva",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/MINERVA-MD/minerva-core/issues"
-  },
-  "homepage": "https://github.com/MINERVA-MD/minerva-core#readme",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.4",
-    "@rollup/plugin-node-resolve": "^15.2.1",
-    "@rollup/plugin-terser": "^0.4.3",
-    "concurrently": "^8.2.1",
-    "electron": "^24.3.0",
-    "electron-builder": "^24.6.4",
-    "rollup": "^3.29.4",
-    "rollup-plugin-css-only": "^4.3.0",
-    "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-svelte": "^7.1.6",
-    "sirv-cli": "^2.0.2",
-    "svelte": "^4.2.1",
-    "wait-on": "^7.0.1"
+    "@sveltejs/vite-plugin-svelte": "^2.4.5",
+    "@tsconfig/svelte": "^5.0.2",
+    "@types/node": "18.17.8",
+    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@vitejs/plugin-vue": "4.3.3",
+    "@vue/test-utils": "2.4.1",
+    "cross-env": "7.0.3",
+    "electron": "26.0.0",
+    "electron-builder": "24.6.3",
+    "eslint": "8.47.0",
+    "eslint-plugin-vue": "9.17.0",
+    "happy-dom": "10.11.0",
+    "nano-staged": "0.8.0",
+    "playwright": "1.37.1",
+    "simple-git-hooks": "2.9.0",
+    "svelte": "^4.2.0",
+    "svelte-check": "^3.5.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.5.2",
+    "unplugin-auto-expose": "0.0.5",
+    "vite": "^4.4.9",
+    "vitest": "0.34.2",
+    "vue": "3.3.4",
+    "vue-tsc": "1.8.8"
   },
   "dependencies": {
-    "electron-serve": "^1.1.0"
+    "electron-updater": "6.1.1"
   }
 }
