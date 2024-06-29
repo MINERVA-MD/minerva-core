@@ -14,7 +14,7 @@
     "build:main": "cd ./src/core/main && vite build",
     "build:preload": "cd ./src/core/preload && vite build",
     "build:ui": "cd ./src/ui && vite build",
-    "compile": "cross-env ENVIRONMENT=production yarn build && electron-builder build --config .electron-builder.config.cjs --dir",
+    "package": "cross-env ENVIRONMENT=production yarn build && electron-builder build --config .electron-builder.config.cjs --dir",
     "test": "yarn test:main && yarn test:preload && yarn test:ui && yarn test:e2e",
     "test:e2e": "yarn build && vitest run",
     "test:main": "vitest run -r src/main --passWithNoTests",
@@ -28,9 +28,9 @@
     "typecheck": "yarn typecheck:main && yarn typecheck:preload && yarn typecheck:ui",
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/postInstall.mjs",
     "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,vue,json}\"",
-    "build:win": "yarn build && electron-builder --config .electron-builder.config.js --win",
-    "build:mac": "yarn build && electron-builder --config .electron-builder.config.js --mac",
-    "build:linux": "yarn build && electron-builder --config .electron-builder.config.js --linux"
+    "package:win": "yarn build && electron-builder --config .electron-builder.config.cjs --win",
+    "package:mac": "yarn build && electron-builder --config .electron-builder.config.cjs --mac",
+    "package:linux": "yarn build && electron-builder --config .electron-builder.config.cjs --linux"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.1.1",

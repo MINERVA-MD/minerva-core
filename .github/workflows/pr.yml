@@ -24,3 +24,6 @@ jobs:
 
       - name: Run build
         run: yarn build
+
+      - name: Package Application
+        run: yarn package
