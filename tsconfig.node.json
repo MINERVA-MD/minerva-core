@@ -1,10 +1,13 @@
 {
-    "exclude": ["src/core/**/*.spec.ts"],
-    "include": [ "./types/**/*.d.ts", "src/core/**/*.ts", "src/core/main/tsconfig.json"],
     "extends": "./tsconfig.json",
+    "include": ["./src/core/**/*.ts"],
     "compilerOptions": {
         "composite": true,
         "moduleResolution": "Node",
         "types": ["node"]
-    }
+    },
+    "references": [
+        {"path": "./src/core/main/tsconfig.json"},
+        {"path": "./src/core/preload/tsconfig.json"}
+    ]
 }

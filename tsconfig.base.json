@@ -13,6 +13,8 @@
       "noUnusedParameters": true,
       "noImplicitAny": false,
       "noImplicitReturns": true,
-      "declaration": true
+      "declaration": true,
+      "outDir": "./dist",
+      "rootDir": "."
     }
   }

@@ -9,7 +9,7 @@ const updateElectronVendors = () => {
     const browserslistrcPath = path.resolve(process.cwd(), '.browserslistrc');
 
     writeFileSync(browserslistrcPath, `Chrome ${chrome}`, 'utf8');
-    writeFileSync('config/electron/.vendors.cache.json', JSON.stringify({chrome, node}, null, 4));
+    writeFileSync('config/electron/.vendors.cache.json', JSON.stringify({node, chrome}, null, 4));
 }
 
 updateElectronVendors();

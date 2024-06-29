@@ -1,6 +1,11 @@
 {
     "extends": "./tsconfig.base.json",
-    "include": [ "scripts/dev.ts" ],
+    "exclude": [ "scripts/dev.ts" ],
+    "include": [
+        "./src/common/**/*.ts", 
+        "./types/env.d.ts", 
+        "./config/electron/.vendors.cache.json"
+    ],
     "references": [
         { "path": "./tsconfig.node.json" },
         { "path": "./tsconfig.web.json" }
