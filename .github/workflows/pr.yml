@@ -1,4 +1,4 @@
-name: CI
+name: Pull Request
 
 on: pull_request
 
@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: 20
 
       - name: Install node dependencies
         run: yarn
