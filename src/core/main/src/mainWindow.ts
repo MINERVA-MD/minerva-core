@@ -9,7 +9,7 @@ async function createWindow() {
       contextIsolation: true,
       sandbox: false, // Sandbox disabled because the demo of preload script depend on the Node.js api
       webviewTag: false, // The webview tag is not recommended. Consider alternatives like an iframe or Electron's BrowserView. @see https://www.electronjs.org/docs/latest/api/webview-tag#warning
-      preload: join(app.getAppPath(), 'dist/preload/index.cjs'),
+      preload: join(app.getAppPath(), 'out/preload/index.cjs'),
     },
   });
 
@@ -47,7 +47,7 @@ async function createWindow() {
      * @see https://github.com/nodejs/node/issues/12682
      * @see https://github.com/electron/electron/issues/6869
      */
-    await browserWindow.loadFile(resolve(__dirname, '../../../../dist/ui/index.html'));
+    await browserWindow.loadFile(resolve(__dirname, '../../out/ui/index.html'));
   }
 
   return browserWindow;
