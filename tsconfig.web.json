@@ -1,10 +1,10 @@
 {
-    "extends": "./tsconfig.json",
+    "extends": ["./tsconfig.json"],
     "include": [
-        "src/ui/**/*.d.ts", 
         "src/ui/**/*.ts", 
         "src/ui/**/*.js", 
-        "src/ui/**/*.svelte"
+        "src/ui/**/*.svelte",
+        "src/ui/src/vite-env.d.ts"
     ],
     "compilerOptions": {
         "composite": true,
