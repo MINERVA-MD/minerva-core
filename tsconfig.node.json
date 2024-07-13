@@ -1,6 +1,9 @@
 {
     "extends": "./tsconfig.json",
-    "include": ["./src/core/**/*.ts"],
+    "include": [
+        "./src/core/**/*.ts", 
+        "./config/electron/.vendors.cache.json"
+    ],
     "compilerOptions": {
         "composite": true,
         "moduleResolution": "Node",

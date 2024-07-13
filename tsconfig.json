@@ -4,7 +4,6 @@
     "include": [
         "./src/common/**/*.ts", 
         "./types/env.d.ts", 
-        "./config/electron/.vendors.cache.json"
     ],
     "references": [
         { "path": "./tsconfig.node.json" },
