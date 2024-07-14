@@ -11,7 +11,7 @@
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
-  "plugins": ["@typescript-eslint", "@stylistic/js", "simple-import-sort"],
+  "plugins": ["@typescript-eslint", "@stylistic/js", "simple-import-sort", "imports"],
   "ignorePatterns": ["node_modules/**", "**/dist/**"],
   "rules": {
     "@typescript-eslint/no-unused-vars": [
@@ -23,6 +23,9 @@
     ],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
     "@stylistic/js/object-curly-spacing": ["error", "always"],
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/consistent-type-imports": "error",
