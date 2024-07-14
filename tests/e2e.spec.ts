@@ -1,9 +1,7 @@
-import { createHash } from 'crypto';
 import type { BrowserWindow } from 'electron';
 import type { ElectronApplication, JSHandle } from 'playwright';
 import { _electron as electron } from 'playwright';
 import { afterAll, beforeAll, expect, test } from 'vitest';
-
 
 let electronApp: ElectronApplication;
 
@@ -26,7 +24,7 @@ test('Main window state', async () => {
         isVisible: boolean;
         isDevToolsOpened: boolean;
         isCrashed: boolean;
-    }  => ({
+      } => ({
         isVisible: mainWindow.isVisible(),
         isDevToolsOpened: mainWindow.webContents.isDevToolsOpened(),
         isCrashed: mainWindow.webContents.isCrashed(),
@@ -55,4 +53,3 @@ test('Main window web content', async () => {
   expect(element, 'Was unable to find the root element').toBeDefined();
   expect((await element!.innerHTML()).trim(), 'Window content was empty').not.equal('');
 });
-
