@@ -25,8 +25,14 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Run Test Suite
+      - if: matrix.os != 'ubuntu-latest'
+        name: Run Test Suite
         run: yarn test
+
+        # See https://github.com/microsoft/playwright/issues/11932
+      - if: matrix.os == 'ubuntu-latest'
+        name: Run tests with xvfb
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn test
 
       - name: Run build
         run: yarn build

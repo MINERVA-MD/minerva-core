@@ -6,7 +6,7 @@ import { afterAll, beforeAll, expect, test } from 'vitest';
 let electronApp: ElectronApplication;
 
 beforeAll(async () => {
-  electronApp = await electron.launch({ args: ['.'], env: { ...process.env, NODE_ENV: 'development' } });
+  electronApp = await electron.launch({ args: ['.'] });
 });
 
 afterAll(async () => {
