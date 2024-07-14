@@ -64,6 +64,7 @@
     "vitest": "0.34.6"
   },
   "dependencies": {
+    "cssnano": "^7.0.4",
     "electron-updater": "6.2.1"
   }
 }
