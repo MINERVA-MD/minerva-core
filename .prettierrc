@@ -10,12 +10,12 @@
       }
     }
   ],
+  "plugins": ["prettier-plugin-svelte"],
   "trailingComma": "all",
-  "bracketSpacing": false,
+  "bracketSpacing": true,
   "arrowParens": "avoid",
   "proseWrap": "never",
   "htmlWhitespaceSensitivity": "strict",
-  "vueIndentScriptAndStyle": false,
   "endOfLine": "lf",
   "singleAttributePerLine": true
 }

@@ -1,14 +1,15 @@
 {
-    "extends": ["./tsconfig.json"],
-    "include": [
-        "src/ui/**/*.ts", 
-        "src/ui/**/*.js", 
-        "src/ui/**/*.svelte",
-        "src/ui/src/vite-env.d.ts"
-    ],
-    "compilerOptions": {
-        "composite": true,
-        "moduleResolution": "Bundler",
-        "lib": ["ESNext", "DOM", "DOM.Iterable"]
-    }
+  "extends": ["./tsconfig.json"],
+  "include": [
+    "src/ui/**/*.ts",
+    "src/ui/**/*.js",
+    "src/ui/**/*.svelte",
+    "src/ui/src/vite-env.d.ts",
+    "./config/electron/.vendors.cache.json"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "moduleResolution": "Bundler",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"]
+  }
 }

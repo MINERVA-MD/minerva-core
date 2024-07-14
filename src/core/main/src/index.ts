@@ -1,7 +1,10 @@
-import {app} from 'electron';
 import './security-restrictions';
-import {restoreOrCreateWindow} from './mainWindow';
-import {platform} from 'node:process';
+
+import { platform } from 'node:process';
+
+import { app } from 'electron';
+
+import { restoreOrCreateWindow } from './mainWindow';
 
 /**
  * Prevent electron from running multiple instances.
@@ -41,7 +44,7 @@ app
   .catch(e => console.error('Failed create window:', e));
 
 /**
- * Install Vue.js or any other extension in development mode only.
+ * Install other extension in development mode only.
  * Note: You must install `electron-devtools-installer` manually
  */
 // if (import.meta.env.DEV) {
