@@ -1,5 +1,5 @@
 import { type BinaryLike, createHash } from 'node:crypto';
 
-export function sha256sum(data: BinaryLike) {
+export function sha256sum(data: BinaryLike): string {
   return createHash('sha256').update(data).digest('hex');
 }

@@ -19,11 +19,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install node dependencies
+      - name: Install dependencies
         run: yarn
+
+      - name: Lint
+        run: yarn lint
 
       - name: Run build
         run: yarn build
 
-      - name: Package Application
+      - name: Package application
         run: yarn package

@@ -5,7 +5,6 @@ import { platform } from 'node:process';
 import { app } from 'electron';
 
 import { restoreOrCreateWindow } from './mainWindow';
-
 /**
  * Prevent electron from running multiple instances.
  */

@@ -11,7 +11,13 @@
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
-  "plugins": ["@typescript-eslint", "@stylistic/js", "simple-import-sort", "imports"],
+  "overrides": [
+    {
+      "files": ["src/ui/**/*.svelte"],
+      "processor": "svelte/svelte"
+    }
+  ],
+  "plugins": ["@typescript-eslint", "@stylistic/js", "simple-import-sort", "import", "eslint-plugin-svelte"],
   "ignorePatterns": ["node_modules/**", "**/dist/**"],
   "rules": {
     "@typescript-eslint/no-unused-vars": [

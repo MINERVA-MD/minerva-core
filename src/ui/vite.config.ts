@@ -1,7 +1,9 @@
-import { svelte } from '@sveltejs/vite-plugin-svelte';
-import { chrome } from '../../config/electron/.vendors.cache.json';
-import { renderer } from 'unplugin-auto-expose';
 import { join } from 'node:path';
+
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { renderer } from 'unplugin-auto-expose';
+
+import { chrome } from '../../config/electron/.vendors.cache.json';
 
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');

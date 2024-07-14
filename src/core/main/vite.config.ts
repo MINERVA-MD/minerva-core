@@ -1,6 +1,8 @@
-import { defineConfig } from 'vite';
-import { node } from '../../../config/electron/.vendors.cache.json';
 import { join } from 'node:path';
+
+import { defineConfig } from 'vite';
+
+import { node } from '../../../config/electron/.vendors.cache.json';
 
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');

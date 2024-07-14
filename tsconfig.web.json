@@ -1,6 +1,7 @@
 {
   "extends": ["./tsconfig.json"],
   "include": [
+    "./src/common/**/*.ts",
     "src/ui/**/*.ts",
     "src/ui/**/*.js",
     "src/ui/**/*.svelte",
