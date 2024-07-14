@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.base.json",
+  "exclude": ["scripts/dev.ts"],
+  "include": ["./src/common/**/*.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
+}

@@ -1,49 +1,70 @@
 {
-  "name": "minerva-core",
+  "name": "minerva",
+  "description": "Markdown Editor For Professionals",
   "version": "1.0.0",
-  "description": "A Collaborative Markdown Editor for Professionals",
-  "main": "main.js",
-  "engines": {
-    "node": ">=16.19.1"
+  "private": true,
+  "type": "module",
+  "author": {
+    "name": "Minerva Core",
+    "email": "jsam07@hotmail.com"
   },
+  "main": "out/main/index.cjs",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
-    "dev": "rollup -c -w --bundleConfigAsCjs",
-    "start": "sirv public --no-clear",
-    "electron": "wait-on http://localhost:8080 && electron .",
-    "electron-dev": "concurrently \"yarn run dev\" \"yarn run electron\"",
-    "make": "yarn build && electron-builder"
+    "build": "yarn build:main && yarn build:preload && yarn build:ui",
+    "build:main": "cd ./src/core/main && vite build",
+    "build:preload": "cd ./src/core/preload && vite build",
+    "build:ui": "cd ./src/ui && vite build",
+    "package": "cross-env ENVIRONMENT=production yarn build && electron-builder build --config .electron-builder.config.cjs --dir",
+    "test": "yarn test:main && yarn test:preload && yarn test:ui && yarn test:e2e",
+    "test:e2e": "yarn build && vitest run",
+    "test:main": "vitest run -r src/main --passWithNoTests",
+    "test:preload": "vitest run -r src/core/preload --passWithNoTests",
+    "test:ui": "vitest run -r src/ui --passWithNoTests",
+    "dev": "cross-env ENVIRONMENT=development tsx scripts/dev.ts",
+    "lint": "eslint src tests --ext js,mjs,cjs,ts,mts,cts",
+    "lint:fix": "eslint src tests --fix --ext js,mjs,cjs,ts,mts,cts",
+    "typecheck:main": "tsc --noEmit -p src/core/main/tsconfig.json",
+    "typecheck:preload": "tsc --noEmit -p src/core/preload/tsconfig.json",
+    "typecheck:ui": "tsc --noEmit -p src/ui/tsconfig.json",
+    "typecheck": "yarn typecheck:main && yarn typecheck:preload && yarn typecheck:ui",
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/postInstall.mjs",
+    "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,svelte,json}\"",
+    "package:win": "yarn build && electron-builder --config .electron-builder.config.cjs --win",
+    "package:mac": "yarn build && electron-builder --config .electron-builder.config.cjs --mac",
+    "package:linux": "yarn build && electron-builder --config .electron-builder.config.cjs --linux"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MINERVA-MD/minerva-core.git"
-  },
-  "keywords": [
-    "markdown",
-    "editor"
-  ],
-  "author": "Minerva",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/MINERVA-MD/minerva-core/issues"
-  },
-  "homepage": "https://github.com/MINERVA-MD/minerva-core#readme",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.4",
-    "@rollup/plugin-node-resolve": "^15.2.1",
-    "@rollup/plugin-terser": "^0.4.3",
-    "concurrently": "^8.2.1",
-    "electron": "^24.3.0",
-    "electron-builder": "^24.6.4",
-    "rollup": "^3.29.4",
-    "rollup-plugin-css-only": "^4.3.0",
-    "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-svelte": "^7.1.6",
-    "sirv-cli": "^2.0.2",
-    "svelte": "^4.2.1",
-    "wait-on": "^7.0.1"
+    "@stylistic/eslint-plugin-js": "^2.3.0",
+    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "@tsconfig/svelte": "^5.0.4",
+    "@types/node": "18.19.39",
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "autoprefixer": "^10.4.19",
+    "cross-env": "7.0.3",
+    "electron": "31.2.0",
+    "electron-builder": "24.13.3",
+    "eslint": "8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-svelte": "^2.42.0",
+    "happy-dom": "10.11.2",
+    "playwright": "1.45.1",
+    "postcss": "^8.4.39",
+    "prettier": "^3.3.3",
+    "prettier-plugin-svelte": "^3.2.5",
+    "svelte": "^4.2.18",
+    "svelte-check": "^3.8.4",
+    "tailwindcss": "^3.4.4",
+    "tslib": "^2.6.3",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3",
+    "unplugin-auto-expose": "0.3.0",
+    "vite": "^5.3.3",
+    "vitest": "0.34.6"
   },
   "dependencies": {
-    "electron-serve": "^1.1.0"
+    "cssnano": "^7.0.4",
+    "electron-updater": "6.2.1"
   }
 }

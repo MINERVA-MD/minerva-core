@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./src/common/**/*.ts",
+    "./src/core/**/*.ts",
+    "./types/env.d.ts",
+    "./config/electron/.vendors.cache.json"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "moduleResolution": "Node",
+    "types": ["node"]
+  },
+  "references": [
+    { "path": "./src/core/main/tsconfig.json" },
+    { "path": "./src/core/preload/tsconfig.json" }
+  ]
+}

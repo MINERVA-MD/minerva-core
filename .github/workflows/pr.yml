@@ -1,0 +1,41 @@
+name: Pull Request
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - if: matrix.os != 'ubuntu-latest'
+        name: Run Test Suite
+        run: yarn test
+
+        # See https://github.com/microsoft/playwright/issues/11932
+      - if: matrix.os == 'ubuntu-latest'
+        name: Run tests with xvfb
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn test
+
+      - name: Run build
+        run: yarn build
+
+      - name: Package application
+        run: yarn package
